@@ -31,6 +31,7 @@ class DBStorage
         $this->adapter = $adapter;
         $this->sessionConfig = $session_config;
         $this->serviceConfig = $service_config;
+        //$this->tblGW = new \Zend\Db\TableGateway\TableGateway('sessions', $this->adapter);
         $this->tblGW = new \Zend\Db\TableGateway\TableGateway('sessions', $this->adapter);
     }
 
@@ -38,9 +39,11 @@ class DBStorage
     {
         $gwOpts = new DbTableGatewayOptions();
         $gwOpts->setDataColumn('data');
+        //$gwOpts->setDataColumn('payload');
         $gwOpts->setIdColumn('id');
         $gwOpts->setLifetimeColumn('lifetime');
-        $gwOpts->setModifiedColumn('modified');
+        //$gwOpts->setModifiedColumn('modified');
+        $gwOpts->setModifiedColumn('last_activity');
         $gwOpts->setNameColumn('name');
 
 

@@ -16,6 +16,7 @@ namespace DBSessionStorage\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use DBSessionStorage\Storage\DBStorage;
+use Zend\Db\Adapter\Adapter;
 
 /*
  * Contributed storage factory by community user https://github.com/acnb
@@ -38,7 +39,7 @@ class DBStorageFactory implements FactoryInterface
             $serviceConfig = $conf['zf2-db-session']['serviceConfig'];
         }
         
-        $dbAdapter = $serviceLocator->get('\Zend\Db\Adapter\Adapter');
+        $dbAdapter = new Adapter($conf['mysql']['live'][APPLICATION_ENV]);
         return new DBStorage($dbAdapter, $config, $serviceConfig);
     }
 }
