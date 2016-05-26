@@ -1,5 +1,5 @@
 {
-    "name": "nitecon/zf2-db-session",
+    "name": "acbl-web/zf2-db-session",
     "description": "Zend Framework 2 database session storage",
     "type": "library",
     "keywords": ["db","session","storage","database","zf2"],
