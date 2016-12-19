@@ -39,7 +39,9 @@ class DBStorageFactory implements FactoryInterface
             $serviceConfig = $conf['zf2-db-session']['serviceConfig'];
         }
         
-        $dbAdapter = new Adapter($conf['mysql']['live'][APPLICATION_ENV]);
+	$dbConfig = $conf['mysql']['live'][APPLICATION_ENV];
+	$dbConfig['database'] = $serviceConfig['database_name'];
+        $dbAdapter = new Adapter($dbConfig);
         return new DBStorage($dbAdapter, $config, $serviceConfig);
     }
 }
